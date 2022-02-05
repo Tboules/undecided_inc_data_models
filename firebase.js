@@ -1,6 +1,6 @@
 const admin = require("firebase-admin");
 const serviceAccount = require("./admin_cert.json");
-const { getFirestore } = required("firebase-admin/firestore");
+const { getFirestore } = require("firebase-admin/firestore");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -8,5 +8,9 @@ admin.initializeApp({
 });
 
 const db = getFirestore();
+const auth = admin.auth();
 
-module.exports = db;
+module.exports = {
+  db,
+  auth,
+};
